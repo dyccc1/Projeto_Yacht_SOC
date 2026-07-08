@@ -73,7 +73,7 @@ Este laboratório proporcionou desafios técnicos que exigiram diagnósticos pro
    Descarregar Relatório Técnico - Volume 1 (PDF): [relatorio_tecnico_vol1.pdf](https://github.com/user-attachments/files/29817418/relatorio_tecnico_vol1.pdf)
 
   
-### Próximos Passos volumes: 
+### Próximos volumes: 
 
 - Implementação de Redundância WAN (Failover Starlink/4G).
 - VPN Site-to-Site via WireGuard para ligação Iate-Escritório.
