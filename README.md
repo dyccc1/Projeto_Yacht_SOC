@@ -17,3 +17,64 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 *   **VLAN 20 (Crew):** Rede segmentada com regras de firewall que impedem o movimento lateral para a ponte.
 *   **VLAN 10 (guest):** Acesso apenas Internet
 *   **WAN (VSAT Link):** Simulação de ligação por satélite monitorizada por Syslog.
+
+# Security Implementation (Volume 1)
+
+### 1. Hardening de Firewall (pfSense)
+Implementei políticas de **Micro-segmentação** utilizando Aliases para simplificar a gestão de regras. 
+*   **Política Crítica:** Bloqueio explícito de tráfego entre a rede da tripulação (CREW) e a rede de navegação (BRIDGE) com logging ativo para auditoria no SIEM.
+
+### 2. Inteligência de Deteção (Wazuh SIEM)
+Desenvolvi uma **Hierarquia de Regras (Parent/Child)** para identificar a origem exata de tentativas de invasão na rede. 
+
+```xml
+<group name="yacht_cyber_security,">
+ 
+  <rule id="100030" level="10">
+    <if_sid>87701</if_sid>
+    <dstip>10.0.30.0/24</dstip>
+    <match>22|3389</match>
+    <description>pfSense: Tentativa de acesso aos sistemas da PONTE detetada.</description>
+    <mitre><id>T1021</id></mitre>
+  </rule>
+
+  
+  <rule id="100031" level="12">
+    <if_matched_sid>100030</if_matched_sid>
+    <srcip>10.0.10.0/24</srcip>
+    <description>ALERTA CRÍTICO: Tentativa de invasão dos GUESTS à PONTE!</description>
+  </rule>
+
+  
+  <rule id="100032" level="12">
+    <if_matched_sid>100030</if_matched_sid>
+    <srcip>10.0.20.0/24</srcip>
+    <description>ALERTA CRÍTICO: Tentativa de invasão da TRIPULAÇÃO à PONTE!</description>
+  </rule>
+
+  
+  <rule id="100033" level="12">
+    <if_matched_sid>100030</if_matched_sid>
+    <srcip>10.0.40.0/24</srcip>
+    <description>ALERTA CRÍTICO: Dispositivo de ENTRETENIMENTO (AV) a tentar aceder à PONTE!</description>
+  </rule>
+</group>
+ ```
+
+### Troubleshooting & Lessons Learned 
+
+Este laboratório proporcionou desafios técnicos que exigiram diagnósticos profundos como:
+
+- Conflito de Tags 802.1Q: Identifiquei uma falha de conetividade após a ativação das VLANs, resolvi através da configuração da interface LAN via CLI para aceitar tráfego de gestão untagged.
+- Análise de Sintaxe XML: Superei erros de mapeamento de IPs no motor de análise do Wazuh, ajustando as regras para a notação CIDR correta.
+  
+### Documentação Completa
+ relatório técnico detalhado com todos os passos, logs e prints aqui:
+   Descarregar Relatório Técnico - Volume 1 (PDF): [relatorio_tecnico_vol1.pdf](https://github.com/user-attachments/files/29817418/relatorio_tecnico_vol1.pdf)
+
+  
+### Próximos Passos volumes: 
+
+- Implementação de Redundância WAN (Failover Starlink/4G).
+- VPN Site-to-Site via WireGuard para ligação Iate-Escritório.
+- Implementação de Acesso Remoto Seguro com Apache Guacamole.
