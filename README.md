@@ -9,7 +9,14 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 <img width="580" height="521" alt="Diagrama sem nome drawio (1)" src="https://github.com/user-attachments/assets/ea811379-4c12-4dc4-8bc1-6912eb321c1e" />
 
 
+# Security Implementation (Volume 1)
 
+### 1. Hardening de Firewall (pfSense)
+Implementei políticas de **Micro-segmentação** utilizando Aliases para simplificar a gestão de regras. 
+*   **Política Crítica:** Bloqueio explícito de tráfego entre a rede da tripulação (CREW) e a rede de navegação (BRIDGE) com logging ativo para auditoria no SIEM.
+  
+<img width="1040" height="681" alt="image" src="https://github.com/user-attachments/assets/5ea77d69-0e25-446e-8fd6-0b0e54b976aa" />
+<img width="705" height="682" alt="image" src="https://github.com/user-attachments/assets/8e5206ff-1445-46c9-bc10-9c4775eaa22b" />
 
 ### Zonas de Segurança Implementadas:
 *   **VLAN 40 (AV CONTROL):** Sistemas de Entretenimento
@@ -18,12 +25,7 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 *   **VLAN 10 (guest):** Acesso apenas Internet
 *   **WAN (VSAT Link):** Simulação de ligação por satélite monitorizada por Syslog.
 
-# Security Implementation (Volume 1)
-
-### 1. Hardening de Firewall (pfSense)
-Implementei políticas de **Micro-segmentação** utilizando Aliases para simplificar a gestão de regras. 
-*   **Política Crítica:** Bloqueio explícito de tráfego entre a rede da tripulação (CREW) e a rede de navegação (BRIDGE) com logging ativo para auditoria no SIEM.
-
+  
 ### 2. Inteligência de Deteção (Wazuh SIEM)
 Desenvolvi uma **Hierarquia de Regras (Parent/Child)** para identificar a origem exata de tentativas de invasão na rede. 
 
