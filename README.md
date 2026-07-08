@@ -13,9 +13,11 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 
 ### 1. Hardening de Firewall (pfSense)
 Implementei políticas de **Micro-segmentação** utilizando Aliases para simplificar a gestão de regras. 
-*   **Política Crítica:** Bloqueio explícito de tráfego entre a rede da tripulação (CREW) e a rede de navegação (BRIDGE) com logging ativo para auditoria no SIEM.
   
 <img width="1040" height="681" alt="image" src="https://github.com/user-attachments/assets/5ea77d69-0e25-446e-8fd6-0b0e54b976aa" />
+
+*   **Política Crítica:** Bloqueio explícito de tráfego entre a rede da tripulação (CREW) e a rede de navegação (BRIDGE) com logging ativo para auditoria no SIEM.
+
 <img width="705" height="682" alt="image" src="https://github.com/user-attachments/assets/8e5206ff-1445-46c9-bc10-9c4775eaa22b" />
 
 ### Zonas de Segurança Implementadas:
