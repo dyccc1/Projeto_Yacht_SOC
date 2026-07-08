@@ -6,7 +6,8 @@ Como ex-tripulante de iates, compreendo que a rede de um superiate é um ambient
 Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando **Wazuh SIEM**, **pfSense Firewall** e **Endpoint Hardening** para garantir a integridade da ponte de comando e a proteção de dados a bordo.
 
 ## Topologia da Rede (Simulação Marítima)
-<img width="580" height="521" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/7dfe1890-48be-47c8-919e-2f098d56173c" />
+[2f1cfdf8-39d2-47b0-acc1-9dc5eec3f253_Volume_1_Segmentao_Crtica.pdf](https://github.com/user-attachments/files/29816551/2f1cfdf8-39d2-47b0-acc1-9dc5eec3f253_Volume_1_Segmentao_Crtica.pdf)
+
 
 
 ### Zonas de Segurança Implementadas:
