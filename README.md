@@ -9,6 +9,7 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
  Relatório técnico detalhado com todos os passos, logs e prints aqui:
 *  Descarregar Relatório Técnico - Volume 1 (PDF): [relatorio_tecnico_vol1.pdf](https://github.com/user-attachments/files/29817418/relatorio_tecnico_vol1.pdf)
 *  Descarregar Relatório Técnico - Volume 2 (PDF):[relatorio tecnico vol2.pdf](https://github.com/user-attachments/files/29857257/relatorio.tecnico.vol2.pdf)
+ * Descarregar Relatório Técnico - Volume 3 (PDF):[relatorio tecnico vol3.pdf](https://github.com/user-attachments/files/29858191/relatorio.tecnico.vol3.pdf)
 
 
 
@@ -105,6 +106,39 @@ Para simular este ambiente, configurei o firewall com dois gateways redundantes:
 * **Monitorização de IP Externo:** Aprendi que, para um failover eficaz, o firewall deve monitorizar um IP externo (como o `8.8.8.8`) e não apenas o Gateway local, para detetar falhas reais na internet e não apenas "cabos desligados".
 * **Persistência de Sessão:** A configuração correta garantiu que, durante a troca de link, as comunicações críticas de telemetria para o **Wazuh** não fossem interrompidas, mantendo a visibilidade de segurança 24/7.
 
+### VPN Site-to-Site (Volume 3): 
+
+### Interligação Iate-Escritório via WireGuard
+Para simular a gestão remota da embarcação a partir de terra, implementei um túnel VPN encriptado ligando o **Iate** a uma instância secundária do pfSense que representa o **Escritório de Gestão (Management Office)**.
+
+*   **Protocolo:** WireGuard (UDP/51820).
+*   **Segurança:** Criptografia assimétrica baseada em troca de chaves públicas/privadas.
+*   **Objetivo:** Permitir o acesso seguro aos sistemas críticos (ECDIS/Wazuh) e tráfego administrativo sem exposição de portas à internet pública.
+<img width="1008" height="789" alt="image" src="https://github.com/user-attachments/assets/0d984b01-7c6f-4e21-a1b5-64964e96d7a5" />
+
+### Troubleshooting de VPN: O Desafio do Handshake
+O maior desafio técnico desta fase foi superar o estado `Latest Handshake: Never`. 
+*   **Diagnóstico:** Através da análise em tempo real dos **Firewall Logs (Dynamic View)**, identifiquei que o pfSense descartava os pacotes do túnel devido à proteção nativa contra redes privadas na interface WAN.
+*   **Resolução:** Desativei a regra implícita 'Block Private Networks' em ambos os lados e configurei rotas estáticas (*Allowed IPs*) para garantir o roteamento correto entre as redes `10.0.0.0/24` e `192.168.50.0/24`.
+<img width="959" height="436" alt="image" src="https://github.com/user-attachments/assets/dd9b855b-e2a5-4e9e-9c4e-095a5980970c" />
+<img width="1049" height="740" alt="image" src="https://github.com/user-attachments/assets/58a6be04-0fdb-438a-aa64-d881c2342635" />
+<img width="1391" height="424" alt="image" src="https://github.com/user-attachments/assets/c0123100-a76f-46e8-836f-7ac137b142e8" />
+
+## Lições Aprendidas 
+
+
+1.  **Proteções Implícitas de Perímetro:** Identifiquei que o pfSense descarta automaticamente tráfego vindo de gamas IP privadas (RFC 1918) na interface WAN. Num ambiente de lab virtual, desativar o **"Block Private Networks"** foi crucial para permitir o handshake da VPN.
+2.  **Visibilidade via Firewall Logs:** Aprendi a utilizar a **Dynamic View** dos logs do pfSense para diagnosticar falhas de conexão. Ver o "X vermelho" nos pacotes UDP 51820 permitiu-me identificar bloqueios de firewall que o status da VPN (estagnado em *Never*) não explicava.
+3.  **Lógica de Roteamento VPN (Allowed IPs):** Compreendi que o estabelecimento do túnel é apenas metade do trabalho; a configuração correta dos **Allowed IPs** é o que define o roteamento lógico, permitindo que a rede do Iate "enxergue" a rede do Escritório através do túnel.
+4.  **Criptografia Assimétrica:** A prática de gerar e cruzar **Public Keys** reforçou a importância da atenção ao detalhe: um único caractere errado ou a troca acidental de chaves resulta num silêncio absoluto na comunicação.
+
+<img width="1631" height="661" alt="image" src="https://github.com/user-attachments/assets/c490f7c9-a04f-40e0-a53d-a47e7b34fef3" />
+
+
+
+
+
+
+
 ### Próximos volumes: 
-- VPN Site-to-Site via WireGuard para ligação Iate-Escritório.
 - Implementação de Acesso Remoto Seguro com Apache Guacamole.
