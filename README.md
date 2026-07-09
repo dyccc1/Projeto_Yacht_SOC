@@ -8,7 +8,8 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 ### Documentação Completa
  relatório técnico detalhado com todos os passos, logs e prints aqui:
    Descarregar Relatório Técnico - Volume 1 (PDF): [relatorio_tecnico_vol1.pdf](https://github.com/user-attachments/files/29817418/relatorio_tecnico_vol1.pdf)
-   Descarregar Relatório Técnico - Volume 2 (PDF):
+   Descarregar Relatório Técnico - Volume 2 (PDF):[relatorio_tecnico_vol2.pdf](https://github.com/user-attachments/files/29854708/relatorio_tecnico_vol2.pdf)
+
 
 ## Topologia da Rede 
 <img width="580" height="521" alt="Diagrama sem nome drawio (1)" src="https://github.com/user-attachments/assets/ea811379-4c12-4dc4-8bc1-6912eb321c1e" />
