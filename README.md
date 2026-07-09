@@ -8,7 +8,8 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 ### Documentação Completa
  Relatório técnico detalhado com todos os passos, logs e prints aqui:
 *  Descarregar Relatório Técnico - Volume 1 (PDF): [relatorio_tecnico_vol1.pdf](https://github.com/user-attachments/files/29817418/relatorio_tecnico_vol1.pdf)
-*  Descarregar Relatório Técnico - Volume 2 (PDF):[relatorio_tecnico_vol2.pdf](https://github.com/user-attachments/files/29854708/relatorio_tecnico_vol2.pdf)
+*  Descarregar Relatório Técnico - Volume 2 (PDF):[relatorio tecnico vol2.pdf](https://github.com/user-attachments/files/29857257/relatorio.tecnico.vol2.pdf)
+
 
 
 ## Topologia da Rede 
@@ -96,7 +97,7 @@ Para simular este ambiente, configurei o firewall com dois gateways redundantes:
 
 
 ### Prova de Conceito (PoC):
-<img width="1096" height="384" alt="image" src="https://github.com/user-attachments/assets/4cad3727-cc9e-40fd-ae9b-c221430cc7a0" />
+<img width="1173" height="355" alt="image" src="https://github.com/user-attachments/assets/e9d940d5-2187-42be-827d-4dbeadeaeab0" />
 <img width="1021" height="663" alt="image" src="https://github.com/user-attachments/assets/86c8b1ad-e0fd-4dbd-acc0-5e3219d7dc7d" />
 
 ### Liçoes aprendidas:
