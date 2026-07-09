@@ -141,4 +141,11 @@ O maior desafio técnico desta fase foi superar o estado `Latest Handshake: Neve
 
 
 ### Próximos volumes: 
-- Implementação de Acesso Remoto Seguro com Apache Guacamole.
+- Controlo de acesso e auditoria de terceiros
+- Defesa contra escuta ativa/IoT
+- Deteçao de dispositivos nao autorizados/WIPS
+- Monitorizaçao de Fontes abertas/OSINT
+- Backup e recuperaçao com isolamento fisico
+- Simulacros Ciberneticos/incident response
+- Testes globais integrados
+
