@@ -14,7 +14,8 @@ Este projeto simula o ecossistema de segurança de um iate de luxo, utilizando *
 
 
 ## Topologia da Rede 
-<img width="580" height="541" alt="diagramaprojeto drawio" src="https://github.com/user-attachments/assets/a566c2ba-ae56-435a-bdb3-152572c9f953" />
+<img width="681" height="1201" alt="diagramavol3 drawio" src="https://github.com/user-attachments/assets/18fbc4ce-0fae-489a-85dd-005705fe4eff" />
+
 
 
 
